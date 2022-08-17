@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -14,9 +14,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   app.use(bodyParser.json());
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
-  app.get( "/filteredimage/", async( req, res ) => {
+  app.get( "/filteredimage/", async( req: Request, res: Response ) => {
     // destruct our path query
-    let { image_url } = req.query;
+    let { image_url }: {image_url:string} = req.query;
 
     // validate the image_url query
     if (!image_url) { 
